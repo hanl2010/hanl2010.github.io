@@ -1,17 +1,445 @@
-<h1 align="center">Binocular-Guided 3D Gaussian Splatting with ViewConsistency for Sparse View Synthesis </h1>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="description"
+          content="Deformable Neural Radiance Fields creates free-viewpoint portraits (nerfies) from casually captured videos.">
+    <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Binocular3DGS</title>
 
-<p align="center">
-    <strong>Liang Han</strong>
-    ·
-    <a href="https://junshengzhou.github.io/"><strong>Junshen Zhou</strong></a>
-    ·
-    <a href="https://yushen-liu.github.io/"><strong>Yu-Shen Liu</strong></a>
-    ·
-    <a href="https://h312h.github.io/"><strong>Zhizhong Han</strong></a>
-</p>
-<h2 align="center">NeurIPS 2024</h2>
-<h3 align="center"><a href="#">Paper</a> | <a href="https://github.com/hanl2010/Binocular3DGS">Project Page</a></h3>
-<div align="center"></div>
-<p align="center">
-    <img src="./assets/pipeline.png" width="780" />
-</p>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-PYVRSFMDRL');
+    </script>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+    <!--    <link rel="icon" href="./static/images/favicon.svg">-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+    </div>
+    <div class="navbar-menu">
+        <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+            <a class="navbar-item" href="https://hanl2010.github.io/Binocular3DGS/">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+            </a>
+
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link">
+                    More Research
+                </a>
+                <div class="navbar-dropdown">
+                    <a class="navbar-item" href="https://hanl2010.github.io/SparseRecon/">
+                        SparseRecon
+                    </a>
+                    <a class="navbar-item" href="https://hanl2010.github.io/Binocular3DGS/">
+                        Binocular3DGS
+                    </a>
+                    <!--                    <a class="navbar-item" href="https://latentfusion.github.io">-->
+                    <!--                        LatentFusion-->
+                    <!--                    </a>-->
+                    <!--                    <a class="navbar-item" href="https://photoshape.github.io">-->
+                    <!--                        PhotoShape-->
+                    <!--                    </a>-->
+                </div>
+            </div>
+        </div>
+
+    </div>
+</nav>
+
+
+<section class="hero">
+    <div class="hero-body">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column has-text-centered">
+                    <h1 class="title is-1 publication-title">Binocular3DGS: Binocular-Guided 3D Gaussian Splatting with ViewConsistency for Sparse View Synthesis</h1>
+                    <div class="is-size-5 publication-authors">
+                        <span class="author-block">
+                            <a href="#">Liang Han</a><sup>1</sup>,
+                        </span>
+                        <span class="author-block">
+                            <a href="https://junshengzhou.github.io/">Junsheng Zhou</a><sup>1</sup>,
+                        </span>
+                        <span class="author-block">
+                            <a href="https://yushen-liu.github.io/">Yu-Shen Liu</a><sup>1</sup>,
+                        </span>
+                        <span class="author-block">
+                            <a href="https://h312h.github.io/">Zhizhong Han</a><sup>2</sup>
+                        </span>
+                        <!--                        <span class="author-block">-->
+                        <!--                            <a href="https://homes.cs.washington.edu/~seitz/">Steven M. Seitz</a><sup>1,2</sup>,-->
+                        <!--                        </span>-->
+                        <!--                        <span class="author-block">-->
+                        <!--                            <a href="http://www.ricardomartinbrualla.com">Ricardo Martin-Brualla</a><sup>2</sup>-->
+                        <!--                        </span>-->
+                    </div>
+
+                    <div class="is-size-5 publication-authors">
+                        <span class="author-block"><sup>1</sup>Tsinghua University,</span>
+<!--                        <span class="author-block"><sup>2</sup>East China Normal University,</span>-->
+<!--                        <span class="author-block"><sup>3</sup>Kuaishou Technology,</span>-->
+                        <span class="author-block"><sup>2</sup>Wayne State University</span>
+                    </div>
+
+                    <div class="is-size-3">NeurIPS 2024</div>
+
+
+                    <div class="column has-text-centered">
+                        <div class="publication-links">
+                            <!-- PDF Link. -->
+                            <span class="link-block">
+                                <a href="#" class="external-link button is-normal is-rounded is-dark">
+                                    <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                                    <span>Paper</span>
+                                </a>
+                            </span>
+                            <!-- Arxiv Link. -->
+
+<!--                                        <span class="link-block">-->
+                            <!--                <a href="#"-->
+                            <!--                   class="external-link button is-normal is-rounded is-dark">-->
+                            <!--                  <span class="icon">-->
+                            <!--                      <i class="ai ai-arxiv"></i>-->
+                            <!--                  </span>-->
+                            <!--                  <span>arXiv</span>-->
+                            <!--                </a>-->
+                            <!--              </span>-->
+                            <!-- Video Link. -->
+                            <!--                            <span class="link-block">-->
+                            <!--                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"-->
+                            <!--                   class="external-link button is-normal is-rounded is-dark">-->
+                            <!--                  <span class="icon">-->
+                            <!--                      <i class="fab fa-youtube"></i>-->
+                            <!--                  </span>-->
+                            <!--                  <span>Video</span>-->
+                            <!--                </a>-->
+                            <!--              </span>-->
+                            <!-- Code Link. -->
+                            <span class="link-block">
+                                <a href="https://github.com/hanl2010/Binocular3DGS" class="external-link button is-normal is-rounded is-dark">
+                                    <span class="icon"><i class="fab fa-github"></i></span>
+                                    <span>Code</span>
+                                </a>
+                            </span>
+                            <!-- Dataset Link. -->
+                            <!--                            <span class="link-block">-->
+                            <!--                <a href="https://github.com/google/nerfies/releases/tag/0.1"-->
+                            <!--                   class="external-link button is-normal is-rounded is-dark">-->
+                            <!--                  <span class="icon">-->
+                            <!--                      <i class="far fa-images"></i>-->
+                            <!--                  </span>-->
+                            <!--                  <span>Data</span>-->
+                            <!--                </a></span>-->
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="section">
+    <div class="container is-max-desktop">
+        <!-- Abstract. -->
+        <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
+                <h2 class="title is-3" style="margin-top: -30px">Abstract</h2>
+                <div class="content has-text-justified">
+                    <p>
+                        Novel view synthesis from sparse inputs is a vital yet challenging task in 3D computer vision.
+                        Previous methods explore 3D Gaussian Splatting with neural priors (e.g. depth priors) as an additional supervision,
+                        demonstrating promising quality and efficiency compared to the NeRF based methods.
+                        However, the neural priors from 2D pretrained models are often noisy and blurry,
+                        which struggle to precisely guide the learning of radiance fields.
+                        In this paper, we propose a novel prior-free method for synthesizing novel views from sparse views using Gaussian Splatting.
+                        Our key idea lies in exploring the self supervisions inherent in the binocular stereo consistency between
+                        each pair of binocular images constructed with disparity-guided image warping.
+                        To this end, we additionally introduce a Gaussian Opacity constraint which regularizes the Gaussian
+                        locations and avoids Gaussian redundancy for improving the robustness and efficiency of inferring
+                        3D Gaussians from sparse views. Extensive experiments on the LLFF, DTU, and Blender datasets demonstrate
+                        that our method significantly outperforms the state-of-the-art methods.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="section">
+    <div class="container is-max-desktop">
+
+        <!-- Method. -->
+        <div class="columns is-centered has-text-centered">
+            <div class="column is-fullwidth">
+                <h2 class="title is-3" style="margin-top: -20px">Method</h2>
+
+                <div class="is-fullwidth is-centered">
+                    <img src="./static/images/pipeline.png" class="center">
+                </div>
+                <div class="content has-text-justified">
+                    <p>The overview of our method. (a) We leverage dense initialization for achieving Gaussian locations,
+                        and optimize the locations and Gaussian attributes with three constraints or strategies:
+                        (b) Binocular Stereo Consistency Loss. We construct a binocular view pair by translating an input
+                        view with camera positions, where we constrain on the view consistency of binocular view pairs in a self-supervised manner.
+                        (c) Opacity Decay Strategy is designed to decay the Gaussian opacity during training for regularizing them.
+                        (d) The Color Reconstruction Loss.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--/ Animation. -->
+
+    </div>
+</section>
+
+
+<section class="section">
+    <div class="container is-max-desktop">
+
+        <!-- Results. -->
+        <div class="columns is-centered">
+            <div class="column is-full-width">
+                <h2 class="title is-3 has-text-centered">Visualization Results</h2>
+
+                <!-- Interpolating. -->
+                <h3 class="title is-4">Visual comparison on LLFF dataset (trained with 3 views)</h3>
+                <div class="content has-text-justified">
+<!--                    <p>Some explanatory text</p>-->
+                </div>
+                
+                <div class="columns is-centered">
+
+                    <div class="column">
+                        <div class="content">
+                            <div class="columns is-centered">
+                                <div class="column is-full-width">
+                                    <div class="has-text-centered has-text-weight-bold">DNGaussian</div>
+                                    <img alt="" src="static/gif/dngaussian/out_fern_00_00_00-00_00_30.gif">
+                                    <img src="static/gif/dngaussian/out_cdepth_fern_00_00_00-00_00_30.gif">
+<!--                                    <img alt="" src="static/gif/dngaussian/out_flower_00_00_00-00_00_30.gif">-->
+<!--                                    <img src="static/gif/dngaussian/out_cdepth_flower_00_00_00-00_00_30.gif">-->
+<!--                                    <img alt="" src="static/gif/dngaussian/out_fortress_00_00_00-00_00_30.gif">-->
+<!--                                    <img src="static/gif/dngaussian/out_cdepth_fortress_00_00_00-00_00_30.gif">-->
+                                    <img alt="" src="static/gif/dngaussian/out_horns_00_00_00-00_00_30.gif">
+                                    <img src="static/gif/dngaussian/out_cdepth_horns_00_00_00-00_00_30.gif">
+                                    <img alt="" src="static/gif/dngaussian/out_leaves_00_00_00-00_00_30.gif">
+                                    <img src="static/gif/dngaussian/out_cdepth_leaves_00_00_00-00_00_30.gif">
+                                    <img alt="" src="static/gif/dngaussian/out_orchids_00_00_00-00_00_30.gif">
+                                    <img alt="" src="static/gif/dngaussian/out_cdepth_orchids_00_00_00-00_00_30.gif">
+<!--                                    <img alt="" src="static/gif/dngaussian/out_room_00_00_00-00_00_30.gif">-->
+<!--                                    <img src="static/gif/dngaussian/out_cdepth_room_00_00_00-00_00_30.gif">-->
+                                    <img alt="" src="static/gif/dngaussian/out_trex_00_00_00-00_00_30.gif">
+                                    <img src="static/gif/dngaussian/out_cdepth_trex_00_00_00-00_00_30.gif">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="content">
+                            <div class="columns is-centered">
+                                <div class="column is-full-width">
+                                    <div class="has-text-centered has-text-weight-bold">FSGS</div>
+                                    <img alt="" src="static/gif/fsgs/out_fern_00_00_00-00_00_30.gif">
+                                    <img alt="" src="static/gif/fsgs/out_cdepth_fern_00_00_00-00_00_30.gif">
+<!--                                    <img alt="" src="static/gif/fsgs/out_flower_00_00_00-00_00_30.gif">-->
+<!--                                    <img alt="" src="static/gif/fsgs/out_cdepth_flower_00_00_00-00_00_30.gif">-->
+<!--                                    <img alt="" src="static/gif/fsgs/out_fortress_00_00_00-00_00_30.gif">-->
+<!--                                    <img alt="" src="static/gif/fsgs/out_cdepth_fortress_00_00_00-00_00_30.gif">-->
+                                    <img alt="" src="static/gif/fsgs/out_horns_00_00_00-00_00_30.gif">
+                                    <img alt="" src="static/gif/fsgs/out_cdepth_horns_00_00_00-00_00_30.gif">
+                                    <img alt="" src="static/gif/fsgs/out_leaves_00_00_00-00_00_30.gif">
+                                    <img alt="" src="static/gif/fsgs/out_cdepth_leaves_00_00_00-00_00_30.gif">
+                                    <img alt="" src="static/gif/fsgs/out_orchids_00_00_00-00_00_30.gif">
+                                    <img alt="" src="static/gif/fsgs/out_cdepth_orchids_00_00_00-00_00_30.gif">
+<!--                                    <img alt="" src="static/gif/fsgs/out_room_00_00_00-00_00_30.gif">-->
+<!--                                    <img alt="" src="static/gif/fsgs/out_cdepth_room_00_00_00-00_00_30.gif">-->
+                                    <img alt="" src="static/gif/fsgs/out_trex_00_00_00-00_00_30.gif">
+                                    <img alt="" src="static/gif/fsgs/out_cdepth_trex_00_00_00-00_00_30.gif">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column">
+                        <div class="content">
+                            <div class="columns is-centered">
+                                <div class="column is-full-width">
+                                    <div class="has-text-centered has-text-weight-bold">Binocular3DGS</div>
+                                    <img alt="" src="static/gif/ours/out_fern_00_00_00-00_00_30.gif">
+                                    <img alt="" src="static/gif/ours/out_cdepth_fern_00_00_00-00_00_30.gif">
+<!--                                    <img alt="" src="static/gif/ours/out_flower_00_00_00-00_00_30.gif">-->
+<!--                                    <img alt="" src="static/gif/ours/out_cdepth_flower_00_00_00-00_00_30.gif">-->
+<!--                                    <img alt="" src="static/gif/ours/out_fortress_00_00_00-00_00_30.gif">-->
+<!--                                    <img alt="" src="static/gif/ours/out_cdepth_fortress_00_00_00-00_00_30.gif">-->
+                                    <img alt="" src="static/gif/ours/out_horns_00_00_00-00_00_30.gif">
+                                    <img alt="" src="static/gif/ours/out_cdepth_horns_00_00_00-00_00_30.gif">
+                                    <img alt="" src="static/gif/ours/out_leaves_00_00_00-00_00_30.gif">
+                                    <img alt="" src="static/gif/ours/out_cdepth_leaves_00_00_00-00_00_30.gif">
+                                    <img alt="" src="static/gif/ours/out_orchids_00_00_00-00_00_30.gif">
+                                    <img alt="" src="static/gif/ours/out_cdepth_orchids_00_00_00-00_00_30.gif">
+<!--                                    <img alt="" src="static/gif/ours/out_room_00_00_00-00_00_30.gif">-->
+<!--                                    <img alt="" src="static/gif/ours/out_cdepth_room_00_00_00-00_00_30.gif">-->
+                                    <img alt="" src="static/gif/ours/out_trex_00_00_00-00_00_30.gif">
+                                    <img alt="" src="static/gif/ours/out_cdepth_trex_00_00_00-00_00_30.gif">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <h3 class="title is-4">Visual comparison on DTU dataset (trained with 3 views)</h3>
+                <div class="content has-text-justified">
+                    <p></p>
+                </div>
+                <div class="columns is-centered">
+                    <div class="column">
+                        <div class="content">
+                            <div class="columns is-centered">
+                                <div class="column is-full-width">
+                                    <div class="has-text-centered has-text-weight-bold">DNGaussian</div>
+                                    <img alt="" src="static/gif/dngaussian/out_scan8_00_00_00-00_00_30.gif">
+                                    <img alt="" src="static/gif/dngaussian/out_scan45_00_00_00-00_00_30.gif">
+                                    <img alt="" src="static/gif/dngaussian/out_scan103_00_00_00-00_00_30.gif">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="content">
+                            <div class="columns is-centered">
+                                <div class="column is-full-width">
+                                    <div class="has-text-centered has-text-weight-bold">Binocular3DGS</div>
+                                    <img alt="" src="static/gif/ours/out_scan8_00_00_00-00_00_30.gif">
+                                    <img alt="" src="static/gif/ours/out_scan45_00_00_00-00_00_30.gif">
+                                    <img alt="" src="static/gif/ours/out_scan103_00_00_00-00_00_30.gif">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="content">
+                            <div class="columns is-centered">
+                                <div class="column is-full-width">
+                                    <div class="has-text-centered has-text-weight-bold">DNGaussian</div>
+                                    <img alt="" src="static/gif/dngaussian/out_scan30_00_00_00-00_00_30.gif">
+                                    <img alt="" src="static/gif/dngaussian/out_scan55_00_00_00-00_00_30.gif">
+                                    <img alt="" src="static/gif/dngaussian/out_scan114_00_00_00-00_00_30.gif">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="content">
+                            <div class="columns is-centered">
+                                <div class="column is-full-width">
+                                    <div class="has-text-centered has-text-weight-bold">Binocular3DGS</div>
+                                    <img alt="" src="static/gif/ours/out_scan30_00_00_00-00_00_30.gif">
+                                    <img alt="" src="static/gif/ours/out_scan55_00_00_00-00_00_30.gif">
+                                    <img alt="" src="static/gif/ours/out_scan114_00_00_00-00_00_30.gif">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+        <!--/ Animation. -->
+
+    </div>
+</section>
+
+<section class="section">
+    <div class="container is-max-desktop content">
+        <!-- BibTeX. -->
+        <h2 class="title is-3" style="margin-top: -20px">Citation</h2>
+        <pre><code>
+@inproceedings{han2024binocular,
+      title = {Binocular-Guided 3D Gaussian Splatting with View Consistency for Sparse View Synthesis},
+      author = {Han, Liang and Zhou, Junsheng and Liu, Yu-Shen and Han, Zhizhong},
+      booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+      year = {2024}
+}</code></pre>
+        <!--/ BibTeX. -->
+    </div>
+</section>
+
+
+<footer class="footer">
+    <div class="container">
+        <!--        <div class="content has-text-centered">-->
+        <!--            <a class="icon-link"-->
+        <!--               href="./static/videos/nerfies_paper.pdf">-->
+        <!--                <i class="fas fa-file-pdf"></i>-->
+        <!--            </a>-->
+        <!--            <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>-->
+        <!--                <i class="fab fa-github"></i>-->
+        <!--            </a>-->
+        <!--        </div>-->
+        <div class="columns is-centered">
+            <div class="column is-8">
+                <div class="content">
+                    <p>
+                        This website is licensed under a <a rel="license"
+                                                            href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+                        Commons Attribution-ShareAlike 4.0 International License</a>.
+                    </p>
+                    <p>
+                        This webpage template is from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
+                        We sincerely thank <a href="https://keunhong.com/">Keunhong Park</a> for developing and
+                        open-sourcing this template.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script type="module" src="static/js/model-viewer.min.js"></script>
+<script src="static/js/script.js"></script>
+
+</body>
+</html>
