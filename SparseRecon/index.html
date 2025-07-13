@@ -200,19 +200,17 @@
                 <h2 class="title is-3" style="margin-top: -30px">Abstract</h2>
                 <div class="content has-text-justified">
                     <p>
-                        Surface reconstruction from sparse views aims to reconstruct a 3D shape or scene from few RGB
-                        images. However, existing methods are merely limited to working on sparse views with large
-                        overlaps, and degenerate severely on views with small overlaps. To address this issue, we
-                        propose SparseRecon, a novel neural implicit reconstruction method for sparse views with volume
-                        rendering-based feature consistency and calibrated depth constraint.
-                        Firstly, we introduce a feature consistency loss across views to constrain the neural implicit
-                        field, which alleviates ambiguity caused by insufficient consistency information of views and
-                        ensures completeness and smoothness in the reconstruction results. Secondly, we employ a
-                        calibrated depth constraint to back up the feature consistency loss in area with large occlusion
-                        and insignificant features, which recovers geometry details for better reconstruction quality.
-                        Experimental results demonstrate that our method can
-                        produce high-quality geometry with sparse-view input, specially in the scenarios on small
-                        overlapping views, and outperforms the state-of-the-art methods.
+                        Surface reconstruction from sparse views aims to reconstruct a 3D shape or scene from few RGB images.
+                        However, existing generalization-based methods do not generalize well on views that were unseen during training,
+                        while the reconstruction quality of overfitting-based methods is still limited by the limited geometry clues.
+                        To address this issue, we propose SparseRecon, a novel neural implicit reconstruction method for sparse views with
+                        volume rendering-based feature consistency and uncertainty-guided depth constraint.
+                        Firstly, we introduce a feature consistency loss across views to constrain the neural implicit field.
+                        This design alleviates the ambiguity caused by insufficient consistency information of views and ensures completeness and smoothness in the reconstruction results.
+                        Secondly, we employ an uncertainty-guided depth constraint to back up the feature consistency loss in areas with occlusion and insignificant features,
+                        which recovers geometry details for better reconstruction quality.
+                        Experimental results demonstrate that our method outperforms the state-of-the-art methods,
+                        which can produce high-quality geometry with sparse-view input, especially in the scenarios on small overlapping views.
                     </p>
                 </div>
             </div>
