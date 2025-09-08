@@ -66,9 +66,9 @@
                     <a class="navbar-item" href="https://hanl2010.github.io/SparseRecon/">
                         SparseRecon
                     </a>
-                    <!--                    <a class="navbar-item" href="https://nerfies.github.io">-->
-                    <!--                        Nerfies-->
-                    <!--                    </a>-->
+                    <a class="navbar-item" href="https://hanl2010.github.io/Binocular3DGS/">
+                        Binocular3DGS
+                    </a>
                     <!--                    <a class="navbar-item" href="https://latentfusion.github.io">-->
                     <!--                        LatentFusion-->
                     <!--                    </a>-->
@@ -125,6 +125,8 @@
                         <span class="author-block"><sup>5</sup>Wayne State University</span>
                     </div>
 
+                    <div class="is-size-3">NeurIPS 2024</div>
+
                     <div class="column has-text-centered">
                         <div class="publication-links">
                             <!-- PDF Link. -->
@@ -155,7 +157,7 @@
                             <!--              </span>-->
                             <!-- Code Link. -->
                             <span class="link-block">
-                                <a href="#" class="external-link button is-normal is-rounded is-dark">
+                                <a href="https://github.com/hanl2010/SparseRecon" class="external-link button is-normal is-rounded is-dark">
                                     <span class="icon"><i class="fab fa-github"></i></span>
                                     <span>Code</span>
                                 </a>
@@ -224,290 +226,42 @@
 </section>
 
 
-<!--<section class="section">-->
-<!--    <div class="container is-max-desktop">-->
+<section class="section">
+    <div class="container is-max-desktop">
 
-<!--        &lt;!&ndash; Results. &ndash;&gt;-->
-<!--        <div class="columns is-centered">-->
-<!--            <div class="column is-full-width">-->
-<!--                <h2 class="title is-3 has-text-centered">Visualization Results</h2>-->
+        <!-- Results. -->
+        <div class="columns is-centered">
+            <div class="column is-full-width">
+                <h2 class="title is-3 has-text-centered">Visualization Results</h2>
 
-<!--                &lt;!&ndash; Interpolating. &ndash;&gt;-->
-<!--                <h3 class="title is-4">Visual comparison on DTU dataset with <i>3 small-overlapping</i> images</h3>-->
-<!--                <div class="content has-text-justified">-->
-<!--                    <p></p>-->
-<!--                </div>-->
-<!--                <div class="content has-text-justified">-->
-<!--                    <img src="./static/images/dtu_small_overlap.svg" class="center">-->
-<!--                </div>-->
-
-
-<!--                <div class="columns is-centered">-->
-<!--                    <div class="column">-->
-<!--                        <div class="content">-->
-<!--                            <div class="columns is-centered">-->
-<!--                                <div class="column is-full-width">-->
-<!--                                    <div id="comp1" class="bal-container-smaller">-->
-
-<!--                                        <div class="bal-after">-->
-<!--                                            <img src="static/gif/svolsdf_scan24_loop.gif">-->
-<!--                                            <div class="bal-afterPosition afterLabel">-->
-<!--                                                S-VolSDF-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-
-<!--                                        <div class="bal-before">-->
-<!--                                            <div class="bal-before-inset-smaller">-->
-<!--                                                <img src="static/gif/ours_scan24_loop.gif">-->
-<!--                                                <div class="bal-beforePosition beforeLabel">-->
-<!--                                                    Ours-->
-<!--                                                </div>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-
-<!--                                        <div class="bal-handle">-->
-<!--                                            <span class=" handle-left-arrow"></span>-->
-<!--                                            <span class="handle-right-arrow"></span>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                    <div id="comp2" class="bal-container-smaller">-->
-
-<!--                                        <div class="bal-after">-->
-<!--                                            <img src="static/gif/svolsdf_scan34_loop.gif">-->
-<!--                                            <div class="bal-afterPosition afterLabel">-->
-<!--                                                S-VolSDF-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-
-<!--                                        <div class="bal-before">-->
-<!--                                            <div class="bal-before-inset-smaller">-->
-<!--                                                <img src="static/gif/ours_scan34_loop.gif">-->
-<!--                                                <div class="bal-beforePosition beforeLabel">-->
-<!--                                                    Ours-->
-<!--                                                </div>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-
-<!--                                        <div class="bal-handle">-->
-<!--                                            <span class=" handle-left-arrow"></span>-->
-<!--                                            <span class="handle-right-arrow"></span>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                    <div id="comp3" class="bal-container-smaller">-->
-<!--                                        <div class="bal-after">-->
-<!--                                            <img src="static/gif/svolsdf_scan38_loop.gif">-->
-<!--                                            <div class="bal-afterPosition afterLabel">-->
-<!--                                                S-VolSDF-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-
-<!--                                        <div class="bal-before">-->
-<!--                                            <div class="bal-before-inset-smaller">-->
-<!--                                                <img src="static/gif/ours_scan38_loop.gif">-->
-<!--                                                <div class="bal-beforePosition beforeLabel">-->
-<!--                                                    Ours-->
-<!--                                                </div>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-
-<!--                                        <div class="bal-handle">-->
-<!--                                            <span class=" handle-left-arrow"></span>-->
-<!--                                            <span class="handle-right-arrow"></span>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                    <div id="comp4" class="bal-container-smaller">-->
-
-<!--                                        <div class="bal-after">-->
-<!--                                            <img src="static/gif/svolsdf_scan40_loop.gif">-->
-<!--                                            <div class="bal-afterPosition afterLabel">-->
-<!--                                                S-VolSDF-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-
-<!--                                        <div class="bal-before">-->
-<!--                                            <div class="bal-before-inset-smaller">-->
-<!--                                                <img src="static/gif/ours_scan40_loop.gif">-->
-<!--                                                <div class="bal-beforePosition beforeLabel">-->
-<!--                                                    Ours-->
-<!--                                                </div>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-
-<!--                                        <div class="bal-handle">-->
-<!--                                            <span class=" handle-left-arrow"></span>-->
-<!--                                            <span class="handle-right-arrow"></span>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                    <div id="comp5" class="bal-container-smaller">-->
-
-<!--                                        <div class="bal-after">-->
-<!--                                            <img src="static/gif/svolsdf_scan110_loop.gif">-->
-<!--                                            <div class="bal-afterPosition afterLabel">-->
-<!--                                                S-VolSDF-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-
-<!--                                        <div class="bal-before">-->
-<!--                                            <div class="bal-before-inset-smaller">-->
-<!--                                                <img src="static/gif/ours_scan110_loop.gif">-->
-<!--                                                <div class="bal-beforePosition beforeLabel">-->
-<!--                                                    Ours-->
-<!--                                                </div>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-
-<!--                                        <div class="bal-handle">-->
-<!--                                            <span class=" handle-left-arrow"></span>-->
-<!--                                            <span class="handle-right-arrow"></span>-->
-<!--                                        </div>-->
-
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="column">-->
-<!--                        <div class="content">-->
-<!--                            <div class="columns is-centered">-->
-<!--                                <div class="column is-full-width">-->
-<!--                                    <div id="comp11" class="bal-container-smaller">-->
-
-<!--                                        <div class="bal-after">-->
-<!--                                            <img src="static/gif/neusurf_scan24_loop.gif">-->
-<!--                                            <div class="bal-afterPosition afterLabel">-->
-<!--                                                NeuSurf-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-
-<!--                                        <div class="bal-before">-->
-<!--                                            <div class="bal-before-inset-smaller">-->
-<!--                                                <img src="static/gif/ours_scan24_loop.gif">-->
-<!--                                                <div class="bal-beforePosition beforeLabel">-->
-<!--                                                    Ours-->
-<!--                                                </div>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-
-<!--                                        <div class="bal-handle">-->
-<!--                                            <span class=" handle-left-arrow"></span>-->
-<!--                                            <span class="handle-right-arrow"></span>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                    <div id="comp21" class="bal-container-smaller">-->
-
-<!--                                        <div class="bal-after">-->
-<!--                                            <img src="static/gif/neusurf_scan34_loop.gif">-->
-<!--                                            <div class="bal-afterPosition afterLabel">-->
-<!--                                                NeuSurf-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-
-<!--                                        <div class="bal-before">-->
-<!--                                            <div class="bal-before-inset-smaller">-->
-<!--                                                <img src="static/gif/ours_scan34_loop.gif">-->
-<!--                                                <div class="bal-beforePosition beforeLabel">-->
-<!--                                                    Ours-->
-<!--                                                </div>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-
-<!--                                        <div class="bal-handle">-->
-<!--                                            <span class=" handle-left-arrow"></span>-->
-<!--                                            <span class="handle-right-arrow"></span>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                    <div id="comp31" class="bal-container-smaller">-->
-
-<!--                                        <div class="bal-after">-->
-<!--                                            <img src="static/gif/neusurf_scan38_loop.gif">-->
-<!--                                            <div class="bal-afterPosition afterLabel">-->
-<!--                                                NeuSurf-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-
-<!--                                        <div class="bal-before">-->
-<!--                                            <div class="bal-before-inset-smaller">-->
-<!--                                                <img src="static/gif/ours_scan38_loop.gif">-->
-<!--                                                <div class="bal-beforePosition beforeLabel">-->
-<!--                                                    Ours-->
-<!--                                                </div>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-
-<!--                                        <div class="bal-handle">-->
-<!--                                            <span class=" handle-left-arrow"></span>-->
-<!--                                            <span class="handle-right-arrow"></span>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                    <div id="comp41" class="bal-container-smaller">-->
-
-<!--                                        <div class="bal-after">-->
-<!--                                            <img src="static/gif/neusurf_scan40_loop.gif">-->
-<!--                                            <div class="bal-afterPosition afterLabel">-->
-<!--                                                NeuSurf-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-
-<!--                                        <div class="bal-before">-->
-<!--                                            <div class="bal-before-inset-smaller">-->
-<!--                                                <img src="static/gif/ours_scan40_loop.gif">-->
-<!--                                                <div class="bal-beforePosition beforeLabel">-->
-<!--                                                    Ours-->
-<!--                                                </div>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-
-<!--                                        <div class="bal-handle">-->
-<!--                                            <span class=" handle-left-arrow"></span>-->
-<!--                                            <span class="handle-right-arrow"></span>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                    <div id="comp51" class="bal-container-smaller">-->
-<!--                                        <div class="bal-after">-->
-<!--                                            <img src="static/gif/neusurf_scan110_loop.gif">-->
-<!--                                            <div class="bal-afterPosition afterLabel">-->
-<!--                                                NeuSurf-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-
-<!--                                        <div class="bal-before">-->
-<!--                                            <div class="bal-before-inset-smaller">-->
-<!--                                                <img src="static/gif/ours_scan110_loop.gif">-->
-<!--                                                <div class="bal-beforePosition beforeLabel">-->
-<!--                                                    Ours-->
-<!--                                                </div>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-
-<!--                                        <div class="bal-handle">-->
-<!--                                            <span class=" handle-left-arrow"></span>-->
-<!--                                            <span class="handle-right-arrow"></span>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
+                <!-- Interpolating. -->
+                <h3 class="title is-4">Visual comparison on DTU dataset with <i>3 small-overlapping</i> images</h3>
+                <div class="content has-text-justified">
+                    <p></p>
+                </div>
+                <div class="content has-text-justified">
+                    <img src="./static/images/dtu_small_overlap.svg" class="center">
+                </div>
 
 
-<!--                <h3 class="title is-4">Visual comparison on DTU dataset with <i>3 large-overlapping</i> images</h3>-->
-<!--                <div class="content has-text-justified">-->
-<!--                    <p></p>-->
-<!--                </div>-->
-<!--                <div class="content has-text-justified">-->
-<!--                    <img src="./static/images/dtu_large_overlap.svg" class="center">-->
-<!--                </div>-->
+                <h3 class="title is-4">Visual comparison on DTU dataset with <i>3 large-overlapping</i> images</h3>
+                <div class="content has-text-justified">
+                    <p></p>
+                </div>
+                <div class="content has-text-justified">
+                    <img src="./static/images/dtu_large_overlap.svg" class="center">
+                </div>
 
-<!--                <h3 class="title is-4">Visual comparison on BlendedMVS dataset with <i>3 small-overlapping</i> images-->
-<!--                </h3>-->
-<!--                <div class="content has-text-justified">-->
-<!--                    <p>With only 3 small-overlapping views provided, the generalizable sparse-view reconstruction-->
-<!--                        methods fail to get mesh on the BlendedMVS dataset.</p>-->
-<!--                </div>-->
-<!--                <div class="content has-text-justified">-->
-<!--                    <img src="./static/images/bmvs_all.svg" class="center">-->
-<!--                </div>-->
+
+                <h3 class="title is-4">Visual comparison on BlendedMVS dataset with <i>3 small-overlapping</i> images
+                </h3>
+                <div class="content has-text-justified">
+                    <p>With only 3 small-overlapping views provided, the generalizable sparse-view reconstruction
+                        methods fail to get mesh on the BlendedMVS dataset.</p>
+                </div>
+                <div class="content has-text-justified">
+                    <img src="./static/images/bmvs_4_scenes.svg" class="center">
+                </div>
 
 
 <!--                <h3 class="title is-4">More Visualization Results</h3>-->
@@ -527,31 +281,14 @@
 <!--                    </div>-->
 <!--                </div>-->
 
-<!--                <div class="content has-text-justified">-->
-<!--                    <p>-->
-<!--                        More results on DTU dataset with <i>3 small-overlapping</i> images.-->
-<!--                    </p>-->
-<!--                </div>-->
-<!--                <div class="content has-text-justified">-->
-<!--                    <img src="./static/images/dtu_small_overlap_all2.svg" class="center">-->
-<!--                </div>-->
-
-<!--                &lt;!&ndash;                <div class="content has-text-justified">&ndash;&gt;-->
-<!--                &lt;!&ndash;                    <p>&ndash;&gt;-->
-<!--                &lt;!&ndash;                        More result on BlendedMVS dataset with <i>3 small-overlapping</i> images.&ndash;&gt;-->
-<!--                &lt;!&ndash;                    </p>&ndash;&gt;-->
-<!--                &lt;!&ndash;                </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                <div class="content has-text-justified">&ndash;&gt;-->
-<!--                &lt;!&ndash;                    <img src="./static/images/bmvs_three_image_addtional.png" class="center">&ndash;&gt;-->
-<!--                &lt;!&ndash;                </div>&ndash;&gt;-->
 
 
-<!--            </div>-->
-<!--        </div>-->
-<!--        &lt;!&ndash;/ Animation. &ndash;&gt;-->
+            </div>
+        </div>
+        <!--/ Animation. -->
 
-<!--    </div>-->
-<!--</section>-->
+    </div>
+</section>
 
 
 <footer class="footer">
