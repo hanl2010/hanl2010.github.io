@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="description"
+          content="Deformable Neural Radiance Fields creates free-viewpoint portraits (nerfies) from casually captured videos.">
+    <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DP-GS</title>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-PYVRSFMDRL');
+    </script>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+    <!--    <link rel="icon" href="./static/images/favicon.svg">-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+    </div>
+    <div class="navbar-menu">
+        <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+            <a class="navbar-item" href="https://hanl2010.github.io/Binocular3DGS/">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+            </a>
+
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link">
+                    More Research
+                </a>
+                <div class="navbar-dropdown">
+                    <a class="navbar-item" href="https://hanl2010.github.io/SparseRecon/">
+                        SparseRecon
+                    </a>
+                    <a class="navbar-item" href="https://hanl2010.github.io/Binocular3DGS/">
+                        Binocular3DGS
+                    </a>
+                    <a class="navbar-item" href="http://hanl2010.github.io/DP-GS">
+                        DP-GS
+                    </a>
+                    <a class="navbar-item" href="http://hanl2010.github.io/VOP-GS">
+                        VOP-GS
+                    </a>
+                    <!--                    <a class="navbar-item" href="https://latentfusion.github.io">-->
+                    <!--                        LatentFusion-->
+                    <!--                    </a>-->
+                    <!--                    <a class="navbar-item" href="https://photoshape.github.io">-->
+                    <!--                        PhotoShape-->
+                    <!--                    </a>-->
+                </div>
+            </div>
+        </div>
+
+    </div>
+</nav>
+
+
+<section class="hero">
+    <div class="hero-body">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column has-text-centered">
+                    <h1 class="title is-1 publication-title">Sparse-View Surface Reconstruction using Gaussian Splatting through High-Confidence Depth Propagation with Normal Priors</h1>
+                    <div class="is-size-5 publication-authors">
+                        <span class="author-block">
+                            <a href="#">Liang Han</a><sup>1</sup>,
+                        </span>
+                        <span class="author-block">
+                            <a href="#">Bangcai Wei</a><sup>2</sup>,
+                        </span>
+                        <span class="author-block">
+                            <a href="https://junshengzhou.github.io/">Junsheng Zhou</a><sup>1</sup>,
+                        </span>
+                        <span class="author-block">
+                            <a href="https://yushen-liu.github.io/">Yu-Shen Liu</a><sup>1</sup>,
+                        </span>
+                        <span class="author-block">
+                            <a href="https://h312h.github.io/">Zhizhong Han</a><sup>3</sup>
+                        </span>
+                        <!--                        <span class="author-block">-->
+                        <!--                            <a href="https://homes.cs.washington.edu/~seitz/">Steven M. Seitz</a><sup>1,2</sup>,-->
+                        <!--                        </span>-->
+                        <!--                        <span class="author-block">-->
+                        <!--                            <a href="http://www.ricardomartinbrualla.com">Ricardo Martin-Brualla</a><sup>2</sup>-->
+                        <!--                        </span>-->
+                    </div>
+
+                    <div class="is-size-5 publication-authors">
+                        <span class="author-block"><sup>1</sup>Tsinghua University,</span>
+                        <span class="author-block"><sup>2</sup>China Telecom,</span>
+<!--                        <span class="author-block"><sup>3</sup>Kuaishou Technology,</span>-->
+                        <span class="author-block"><sup>3</sup>Wayne State University</span>
+                    </div>
+
+                    <div class="is-size-3">ECCV 2026</div>
+
+
+                    <div class="column has-text-centered">
+                        <div class="publication-links">
+                            <!-- PDF Link. -->
+<!--                            <span class="link-block">-->
+<!--                                <a href="#" class="external-link button is-normal is-rounded is-dark">-->
+<!--                                    <span class="icon"><i class="fas fa-file-pdf"></i></span>-->
+<!--                                    <span>Paper</span>-->
+<!--                                </a>-->
+<!--                            </span>-->
+                            <!-- Arxiv Link. -->
+                            <span class="link-block">
+                                <a href="#"
+                                   class="external-link button is-normal is-rounded is-dark">
+                                  <span class="icon">
+                                      <i class="ai ai-arxiv"></i>
+                                  </span>
+                                  <span>arXiv</span>
+                                </a>
+                              </span>
+                            <!-- Video Link. -->
+                            <!--                            <span class="link-block">-->
+                            <!--                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"-->
+                            <!--                   class="external-link button is-normal is-rounded is-dark">-->
+                            <!--                  <span class="icon">-->
+                            <!--                      <i class="fab fa-youtube"></i>-->
+                            <!--                  </span>-->
+                            <!--                  <span>Video</span>-->
+                            <!--                </a>-->
+                            <!--              </span>-->
+                            <!-- Code Link. -->
+                            <span class="link-block">
+                                <a href="https://github.com/hanl2010/DP-GS" class="external-link button is-normal is-rounded is-dark">
+                                    <span class="icon"><i class="fab fa-github"></i></span>
+                                    <span>Code</span>
+                                </a>
+                            </span>
+                            <!-- Dataset Link. -->
+                            <!--                            <span class="link-block">-->
+                            <!--                <a href="https://github.com/google/nerfies/releases/tag/0.1"-->
+                            <!--                   class="external-link button is-normal is-rounded is-dark">-->
+                            <!--                  <span class="icon">-->
+                            <!--                      <i class="far fa-images"></i>-->
+                            <!--                  </span>-->
+                            <!--                  <span>Data</span>-->
+                            <!--                </a></span>-->
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container is-max-desktop">
+
+        <!-- Method. -->
+        <div class="columns is-centered has-text-centered">
+            <div class="column is-fullwidth">
+<!--                <h2 class="title is-3" style="margin-top: -20px">Method</h2>-->
+
+                <div class="is-fullwidth is-centered">
+                    <img src="./static/images/cover_fig_v2.png" class="center">
+                </div>
+<!--                <div class="content has-text-justified">-->
+<!--                    <p>The overview of our method. (a) We leverage dense initialization for achieving Gaussian locations,-->
+<!--                        and optimize the locations and Gaussian attributes with three constraints or strategies:-->
+<!--                        (b) Binocular Stereo Consistency Loss. We construct a binocular view pair by translating an input-->
+<!--                        view with camera positions, where we constrain on the view consistency of binocular view pairs in a self-supervised manner.-->
+<!--                        (c) Opacity Decay Strategy is designed to decay the Gaussian opacity during training for regularizing them.-->
+<!--                        (d) The Color Reconstruction Loss.-->
+<!--                    </p>-->
+<!--                </div>-->
+            </div>
+        </div>
+        <!--/ Animation. -->
+
+    </div>
+</section>
+
+<section class="section">
+    <div class="container is-max-desktop">
+        <!-- Abstract. -->
+        <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
+                <h2 class="title is-3" style="margin-top: -30px">Abstract</h2>
+                <div class="content has-text-justified">
+                    <p>
+                        3D reconstruction from sparse views is a challenging task in 3D computer vision.
+                        Recent studies on 3D Gaussian Splatting (3DGS) have achieved remarkable results with sparse views in novel view synthesis, yet reconstructing high-quality geometric surfaces from sparse views remains a challenge, due to the limited geometry clues and the discreteness of Gaussians.
+                        In this paper, we propose a novel 3DGS-based method for high-fidelity surface reconstruction from sparse views. Our key insight is to introduce a normal-guided depth propagation approach, which can extend depth information from high-confidence regions to constrain the depth in low-confidence areas. Additionally, we propose an abnormal depth edge-aware regularization to address depth discontinuities caused by the discreteness of Gaussians.
+                        Extensive experiments on DTU and Tanks-and-Temples datasets demonstrate that our method outperforms the state-of-the-art methods in sparse view surface reconstruction.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<section class="section">
+    <div class="container is-max-desktop">
+
+        <!-- Results. -->
+        <div class="columns is-centered">
+            <div class="column is-full-width">
+                <h2 class="title is-3 has-text-centered">Visualization Results</h2>
+
+                <!-- Interpolating. -->
+                <h3 class="title is-4">Visual comparison on DTU dataset with <i>3 small-overlapping</i> images</h3>
+                <div class="content has-text-justified">
+<!--                    <p>Some explanatory text</p>-->
+                </div>
+                
+                <div class="columns is-centered">
+
+                    <div class="column">
+                        <div class="content">
+                            <div class="columns is-centered">
+                                <div class="column is-full-width">
+                                    <div class="has-text-centered has-text-weight-bold">FatesGS</div>
+                                    <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
+                                        <source src="static/gif/fatesgs/scan24.mp4" type="video/mp4">
+                                    </video>
+                                    <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
+                                        <source src="static/gif/fatesgs/scan69.mp4" type="video/mp4">
+                                    </video>
+                                    <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
+                                        <source src="static/gif/fatesgs/scan97.mp4" type="video/mp4">
+                                    </video>
+                                    <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
+                                        <source src="static/gif/fatesgs/scan105.mp4" type="video/mp4">
+                                    </video>
+                                    <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
+                                        <source src="static/gif/fatesgs/scan110.mp4" type="video/mp4">
+                                    </video>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="content">
+                            <div class="columns is-centered">
+                                <div class="column is-full-width">
+                                    <div class="has-text-centered has-text-weight-bold">MAtCha</div>
+                                    <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
+                                        <source src="static/gif/matcha/scan24.mp4" type="video/mp4">
+                                    </video>
+                                    <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
+                                        <source src="static/gif/matcha/scan69.mp4" type="video/mp4">
+                                    </video>
+                                    <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
+                                        <source src="static/gif/matcha/scan97.mp4" type="video/mp4">
+                                    </video>
+                                    <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
+                                        <source src="static/gif/matcha/scan105.mp4" type="video/mp4">
+                                    </video>
+                                    <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
+                                        <source src="static/gif/matcha/scan110.mp4" type="video/mp4">
+                                    </video>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column">
+                        <div class="content">
+                            <div class="columns is-centered">
+                                <div class="column is-full-width">
+                                    <div class="has-text-centered has-text-weight-bold">Ours</div>
+                                    <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
+                                        <source src="static/gif/ours/scan24.mp4" type="video/mp4">
+                                    </video>
+                                    <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
+                                        <source src="static/gif/ours/scan69.mp4" type="video/mp4">
+                                    </video>
+                                    <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
+                                        <source src="static/gif/ours/scan97.mp4" type="video/mp4">
+                                    </video>
+                                    <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
+                                        <source src="static/gif/ours/scan105.mp4" type="video/mp4">
+                                    </video>
+                                    <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
+                                        <source src="static/gif/ours/scan110.mp4" type="video/mp4">
+                                    </video>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <h3 class="title is-4">Visual comparison on Tanks and Temples (TNT) Dataset with 20 images </h3>
+                <div class="content has-text-justified">
+                    <p></p>
+                </div>
+                <div class="columns is-centered">
+                    <div class="column">
+                        <div class="content">
+                            <div class="columns is-centered">
+                                <div class="column is-full-width">
+                                    <div class="has-text-centered has-text-weight-bold">MAtCha</div>
+                                    <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
+                                        <source src="static/gif/matcha/truck.mp4" type="video/mp4">
+                                    </video>
+                                    <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
+                                        <source src="static/gif/matcha/caterpillar.mp4" type="video/mp4">
+                                    </video>
+                                    <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
+                                        <source src="static/gif/matcha/ignatius.mp4" type="video/mp4">
+                                    </video>
+                                    <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
+                                        <source src="static/gif/matcha/barn.mp4" type="video/mp4">
+                                    </video>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="content">
+                            <div class="columns is-centered">
+                                <div class="column is-full-width">
+                                    <div class="has-text-centered has-text-weight-bold">Ours</div>
+                                    <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
+                                        <source src="static/gif/ours/truck.mp4" type="video/mp4">
+                                    </video>
+                                    <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
+                                        <source src="static/gif/ours/caterpillar.mp4" type="video/mp4">
+                                    </video>
+                                    <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
+                                        <source src="static/gif/ours/ignatius.mp4" type="video/mp4">
+                                    </video>
+                                    <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
+                                        <source src="static/gif/ours/barn.mp4" type="video/mp4">
+                                    </video>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+        <!--/ Animation. -->
+
+    </div>
+</section>
+
+<section class="section">
+    <div class="container is-max-desktop content">
+        <!-- BibTeX. -->
+        <h2 class="title is-3" style="margin-top: -20px">Citation</h2>
+        <pre><code>
+@inproceedings{han2026dpgs,
+      title = {Sparse-View Surface Reconstruction using Gaussian Splatting through High-Confidence Depth Propagation with Normal Priors},
+      author = {Han, Liang and Wei, Bangcai and Zhou, Junsheng and Liu, Yu-Shen and Han, Zhizhong},
+      booktitle = {European Conference on Computer Vision},
+      year = {2026}
+}</code></pre>
+        <!--/ BibTeX. -->
+    </div>
+</section>
+
+
+<footer class="footer">
+    <div class="container">
+        <!--        <div class="content has-text-centered">-->
+        <!--            <a class="icon-link"-->
+        <!--               href="./static/videos/nerfies_paper.pdf">-->
+        <!--                <i class="fas fa-file-pdf"></i>-->
+        <!--            </a>-->
+        <!--            <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>-->
+        <!--                <i class="fab fa-github"></i>-->
+        <!--            </a>-->
+        <!--        </div>-->
+        <div class="columns is-centered">
+            <div class="column is-8">
+                <div class="content">
+                    <p>
+                        This website is licensed under a <a rel="license"
+                                                            href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+                        Commons Attribution-ShareAlike 4.0 International License</a>.
+                    </p>
+                    <p>
+                        This webpage template is from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
+                        We sincerely thank <a href="https://keunhong.com/">Keunhong Park</a> for developing and
+                        open-sourcing this template.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script type="module" src="static/js/model-viewer.min.js"></script>
+<script src="static/js/script.js"></script>
+
+</body>
+</html>
